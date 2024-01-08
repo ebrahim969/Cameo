@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "151526909791",
+    "project_id": "cameo-a7762",
+    "storage_bucket": "cameo-a7762.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151526909791:android:e31baf706cb8d2d71178ea",
+        "android_client_info": {
+          "package_name": "com.example.tigor_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6CjcfYkDf1tYFXP-P1Hw6RIbl5BRIJyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
