@@ -34,6 +34,7 @@ class _AddDataToDatabaseState extends State<AddDataToDatabase> {
                 height: 50,
               ),
               InkWell(
+                
                   onTap: () async {
                     //! Step1 : picke image by image_picker
                     ImagePicker imagePicker = ImagePicker();
