@@ -97,6 +97,10 @@ class Assets {
   /// assets/images/model_9.jpg
   static const String imagesModel9 = "assets/images/model_9.jpg";
 
+  /// Assets for imagesNot found image
+  /// assets/images/not found image.png
+  static const String imagesNotimage = "assets/images/not found image.png";
+
   /// Assets for imagesOnBoarding1
   /// assets/images/on_boarding_1.jpg
   static const String imagesOnBoarding1 = "assets/images/on_boarding_1.jpg";

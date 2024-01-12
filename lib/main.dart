@@ -1,8 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:tigor_store/core/database/cache/cache_helper.dart';
 import 'package:tigor_store/core/routes/app_router.dart';
-import 'package:tigor_store/core/services/service_locator.dart';
 import 'package:tigor_store/firebase_options.dart';
 
 void main() async{
@@ -10,8 +8,8 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
 );
-  setupServiceLocator();
-  await getIt<CacheHelper>().init();
+  // setupServiceLocator();
+  // await getIt<CacheHelper>().init();
   runApp(const CameoStore());
 }
 
