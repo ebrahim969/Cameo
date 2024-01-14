@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tigor_store/core/routes/app_router.dart';
+import 'package:tigor_store/features/home/presentation/cubit/cubit/home_cubit.dart';
 import 'package:tigor_store/firebase_options.dart';
 
 void main() async{
@@ -18,9 +20,12 @@ class CameoStore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: routes,
+    return BlocProvider(
+      create: (context) => HomeCubit(),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerConfig: routes,
+      ),
     );
   }
 }

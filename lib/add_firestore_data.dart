@@ -3,9 +3,12 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tigor_store/core/utils/app_images.dart';
+import 'package:tigor_store/core/widgets/custom_category_cubit_bottom_sheet.dart';
 import 'package:tigor_store/core/widgets/custom_text_feild.dart';
+import 'package:tigor_store/features/home/presentation/cubit/cubit/home_cubit.dart';
 
 class AddDataToDatabase extends StatefulWidget {
   const AddDataToDatabase({super.key});
@@ -17,13 +20,21 @@ class AddDataToDatabase extends StatefulWidget {
 class _AddDataToDatabaseState extends State<AddDataToDatabase> {
   GlobalKey<FormState> formKey = GlobalKey();
   final TextEditingController categoryController = TextEditingController();
-  final TextEditingController imageController = TextEditingController();
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   String imageUrl = '';
+
+  @override
+  void initState() {
+    context.read<HomeCubit>().getAllCategories();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final categoryCubit = context.read<HomeCubit>();
+
     return SafeArea(
       child: Scaffold(
         body: Form(
@@ -34,7 +45,6 @@ class _AddDataToDatabaseState extends State<AddDataToDatabase> {
                 height: 50,
               ),
               InkWell(
-                
                   onTap: () async {
                     //! Step1 : picke image by image_picker
                     ImagePicker imagePicker = ImagePicker();
@@ -53,9 +63,7 @@ class _AddDataToDatabaseState extends State<AddDataToDatabase> {
                     try {
                       await referenceImageToUpload.putFile(File(file.path));
                       imageUrl = await referenceImageToUpload.getDownloadURL();
-                      setState(() {
-                        
-                      });
+                      setState(() {});
                     } catch (e) {
                       log(e.toString());
                     }
@@ -65,24 +73,23 @@ class _AddDataToDatabaseState extends State<AddDataToDatabase> {
                       width: 200,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16)),
-                      child:imageUrl.isEmpty ?  Image.asset(
-                        Assets.imagesNotimage,
-                        fit: BoxFit.cover,
-                      ): Image.network(imageUrl, fit: BoxFit.cover,))),
-              CustomTextFormField(
-                labelText: "category",
-                controller: categoryController,
-              ),
-              // CustomTextFormField(
-              //   labelText: "image",
-              //   controller: imageController,
-              // ),
+                      child: imageUrl.isEmpty
+                          ? Image.asset(
+                              Assets.imagesNotimage,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.network(
+                              imageUrl,
+                              fit: BoxFit.cover,
+                            ))),
+              CustomSelectCategoryBotomSheet(categoryCubit: categoryCubit),
               CustomTextFormField(
                 labelText: "title",
                 controller: titleController,
               ),
               CustomTextFormField(
                 labelText: "desc",
+                maxLines: 3,
                 controller: descController,
               ),
               CustomTextFormField(
@@ -97,7 +104,7 @@ class _AddDataToDatabaseState extends State<AddDataToDatabase> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       Map<String, dynamic> saveData = {
-                        'category': categoryController.text,
+                        'category': categoryCubit.selectedCategory,
                         'image': imageUrl,
                         'title': titleController.text,
                         'desc': descController.text,

@@ -11,6 +11,13 @@ final class NewProductFailure extends HomeState {
 
   NewProductFailure({required this.errMessage});
 }
+final class AllCategoreisLoading extends HomeState {}
+final class AllCategoriesSuccess extends HomeState {}
+final class AllCategoriesFailure extends HomeState {
+  final String errMessage;
+
+  AllCategoriesFailure({required this.errMessage});
+}
 
 
 
