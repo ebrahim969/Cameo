@@ -7,7 +7,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.labelText,
     this.onChanged,
     this.onFieldSubmitted,
-    this.obscureText, this.suffixIcon, this.controller, this.maxLines,
+    this.obscureText, this.suffixIcon, this.controller, this.maxLines, this.enabled,
   });
   final String labelText;
   final Function(String)? onChanged;
@@ -16,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextEditingController? controller;
   final int? maxLines;
+  final bool? enabled;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
             return null;
           }
         },
+        enabled: enabled ?? true,
         onChanged: onChanged,
         onFieldSubmitted: onFieldSubmitted,
         obscureText: obscureText ?? false,

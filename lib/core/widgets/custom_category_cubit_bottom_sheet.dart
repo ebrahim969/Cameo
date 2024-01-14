@@ -19,7 +19,7 @@ class CustomSelectCategoryBotomSheet extends StatelessWidget {
           return state is AllCategoreisLoading
               ? Container()
               : Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(left: 8, right: 8, top: 32),
                 child: DropdownButtonFormField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(

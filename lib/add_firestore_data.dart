@@ -9,6 +9,7 @@ import 'package:tigor_store/core/utils/app_images.dart';
 import 'package:tigor_store/core/widgets/custom_category_cubit_bottom_sheet.dart';
 import 'package:tigor_store/core/widgets/custom_text_feild.dart';
 import 'package:tigor_store/features/home/presentation/cubit/cubit/home_cubit.dart';
+import 'package:intl/intl.dart';
 
 class AddDataToDatabase extends StatefulWidget {
   const AddDataToDatabase({super.key});
@@ -24,6 +25,7 @@ class _AddDataToDatabaseState extends State<AddDataToDatabase> {
   final TextEditingController descController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   String imageUrl = '';
+  String productDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
   @override
   void initState() {
@@ -69,7 +71,7 @@ class _AddDataToDatabaseState extends State<AddDataToDatabase> {
                     }
                   },
                   child: Container(
-                      height: 200,
+                      height: 250,
                       width: 200,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16)),
@@ -96,6 +98,11 @@ class _AddDataToDatabaseState extends State<AddDataToDatabase> {
                 labelText: "price",
                 controller: priceController,
               ),
+              CustomTextFormField(
+                labelText: productDate,
+                controller: TextEditingController(text: productDate),
+                enabled: false,
+              ),
               const SizedBox(
                 height: 16,
               ),
@@ -108,7 +115,8 @@ class _AddDataToDatabaseState extends State<AddDataToDatabase> {
                         'image': imageUrl,
                         'title': titleController.text,
                         'desc': descController.text,
-                        'price': int.parse(priceController.text)
+                        'price': int.parse(priceController.text),
+                        'productDate': productDate
                       };
 
                       FirebaseFirestore.instance
