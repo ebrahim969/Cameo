@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tigor_store/core/utils/app_colors.dart';
-import 'package:tigor_store/features/home/presentation/cubit/cubit/home_cubit.dart';
+import 'package:tigor_store/features/admin/presentation/cubit/admin_cubit.dart';
 
 class CustomSelectCategoryBotomSheet extends StatelessWidget {
   const CustomSelectCategoryBotomSheet({
     super.key,
-    required this.categoryCubit,
   });
-
-  final HomeCubit categoryCubit;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
+    AdminCubit cubit = context.read<AdminCubit>();
+    return BlocConsumer<AdminCubit, AdminState>(
         listener: (context, state) {},
         builder: (context, state) {
           return state is AllCategoreisLoading
@@ -27,13 +25,13 @@ class CustomSelectCategoryBotomSheet extends StatelessWidget {
                           borderSide:
                               const BorderSide(color: AppColors.greyColor)),
                     ),
-                    value: categoryCubit.allCategories[0].title,
-                    items: categoryCubit.allCategories
+                    value: cubit.allCategories[0].title,
+                    items: cubit.allCategories
                         .map((item) => DropdownMenuItem(
                             value: item.title, child: Text(item.title)))
                         .toList(),
                     onChanged: ((value) {
-                      categoryCubit.selectedCategory = value!;
+                      cubit.selectedCategory = value!;
                     })),
               );
         });

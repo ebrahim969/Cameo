@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:tigor_store/add_firestore_data.dart';
+import 'package:tigor_store/features/admin/presentation/views/add_product_view.dart';
 import 'package:tigor_store/features/auth/presentation/view/sign_up_view.dart';
 import 'package:tigor_store/features/home/main_screen.dart';
 import 'package:tigor_store/features/home/presentation/view/home_view.dart';
@@ -9,7 +9,7 @@ final GoRouter routes = GoRouter(
   routes: [
     GoRoute(
       path: "/",
-      builder: (context, state) => const AddDataToDatabase(),
+      builder: (context, state) => const AddProductView(),
     ),
     GoRoute(
       path: "/OnBoardingView",
