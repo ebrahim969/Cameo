@@ -27,9 +27,6 @@ class HomeViewBody extends StatelessWidget {
           child: SizedBox(height: 16),
         ),
         SliverToBoxAdapter(
-          child: SizedBox(height: 16),
-        ),
-        SliverToBoxAdapter(
           child: CustomMensCategorysSection(),
         ),
       ],
