@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:tigor_store/features/admin/data/models/category_model.dart';
-import 'package:uuid/uuid.dart';
 part 'admin_state.dart';
 
 class AdminCubit extends Cubit<AdminState> {

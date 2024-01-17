@@ -8,23 +8,44 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  List<ProductModel> newProducts = [];
-    String selectedCategory = '';
+  List<ProductModel> womanProducts = [];
+  List<ProductModel> mensProducts = [];  
 
-  Future<void> getNewProducts() async {
+  Future <void> getHomeProducts() async
+  {
+    await getWomensProducts();
+    await getMensProducts();
+  }
+  Future<void> getWomensProducts() async {
     try {
-      emit(NewProductLoading());
+      emit(WomansProductLoading());
       await firestore
           .collection("products")
-          .where('category', isEqualTo: "new_products")
+          .where('category', isEqualTo: "Woman's Wear")
           .get()
           .then((value) => value.docs.forEach((element) {
-                newProducts.add(ProductModel.fromJson(element.data()));
+                womanProducts.add(ProductModel.fromJson(element.data()));
               }));
 
-      emit(NewProductSuccess());
+      emit(WomansProductSuccess());
     } on FirebaseException catch (e) {
-      emit(NewProductFailure(errMessage: e.toString()));
+      emit(WomansProductFailure(errMessage: e.toString()));
+    }
+  }
+  Future<void> getMensProducts() async {
+    try {
+      emit(MensProductLoading());
+      await firestore
+          .collection("products")
+          .where('category', isEqualTo: "Men's Wear")
+          .get()
+          .then((value) => value.docs.forEach((element) {
+                mensProducts.add(ProductModel.fromJson(element.data()));
+              }));
+
+      emit(MensProductSuccess());
+    } on FirebaseException catch (e) {
+      emit(MensProductFailure(errMessage: e.toString()));
     }
   }
 }

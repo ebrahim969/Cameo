@@ -3,7 +3,7 @@ import 'package:tigor_store/core/models/data_model.dart';
 class ProductModel extends DataModel {
   final int price;
   final String desc;
-  final DateTime productDate;
+  final String productDate;
 
   ProductModel(
       {required this.price,
