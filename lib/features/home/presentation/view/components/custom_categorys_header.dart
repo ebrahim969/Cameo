@@ -14,7 +14,7 @@ class CustomCategorysHeader extends StatelessWidget {
         ListTile(
             title: Text(
               title,
-              style: Styles.anybodyBoldstyle28,
+              style: Styles.anybodyBoldstyle28.copyWith(fontSize: 24),
             ),
             subtitle: Text(
               subTitle,

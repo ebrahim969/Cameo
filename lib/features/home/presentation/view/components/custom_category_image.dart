@@ -17,7 +17,7 @@ class CustomCategoryImage extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),
-      child: CustomNetworkImage(imageUrl: model.image, height: 200, width: 150),
+      child: CustomNetworkImage(imageUrl: model.image, height: 200, width: 150, circle: false,),
     );
   }
 }

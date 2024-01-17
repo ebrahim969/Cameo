@@ -19,6 +19,14 @@ final class MensProductFailure extends HomeState {
   MensProductFailure({required this.errMessage});
 }
 
+final class GetCategoriesSuccess extends HomeState {}
+final class GetCategoriesLoading extends HomeState {}
+final class GetCategoriesFailure extends HomeState {
+  final String errMessage;
+
+  GetCategoriesFailure({required this.errMessage});
+}
+
 
 
 

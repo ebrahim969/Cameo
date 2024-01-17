@@ -6,17 +6,19 @@ import 'package:tigor_store/features/home/presentation/view/components/custom_fa
 
 class CustomListViewItem extends StatelessWidget {
   const CustomListViewItem({super.key, required this.model});
-  
+
   final ProductModel model;
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         Stack(
           clipBehavior: Clip.none,
           alignment: Alignment.bottomRight,
           children: [
-            CustomCategoryImage(model: model,),
+            CustomCategoryImage(
+              model: model,
+            ),
             const Positioned(
               bottom: -10,
               right: -10,
@@ -27,8 +29,12 @@ class CustomListViewItem extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        Text(model.title, style: Styles.anybody600style16,),
-        Text("${model.price.toString()} \$", style: Styles.anybody400style48.copyWith(fontSize: 16)),
+        Text(
+          model.title,
+          style: Styles.anybody600style16.copyWith(fontSize: 14),
+        ),
+        Text("${model.price.toString()} \$",
+            style: Styles.anybody400style48.copyWith(fontSize: 16)),
       ],
     );
   }

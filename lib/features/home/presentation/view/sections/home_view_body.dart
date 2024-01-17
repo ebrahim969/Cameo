@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tigor_store/features/home/presentation/view/sections/custom_all_categories_section.dart';
 import 'package:tigor_store/features/home/presentation/view/sections/custom_home_slider.dart';
 import 'package:tigor_store/features/home/presentation/view/sections/custom_mens_category_section.dart';
 import 'package:tigor_store/features/home/presentation/view/sections/custom_woman_category_section.dart';
@@ -16,6 +17,12 @@ class HomeViewBody extends StatelessWidget {
         ),
         SliverToBoxAdapter(
           child: CustomHomeSlider(),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(height: 16),
+        ),
+        SliverToBoxAdapter(
+          child: CustomAllCategoriesSection(),
         ),
         SliverToBoxAdapter(
           child: SizedBox(height: 16),
