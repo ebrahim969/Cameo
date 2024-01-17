@@ -7,7 +7,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.labelText,
     this.onChanged,
     this.onFieldSubmitted,
-    this.obscureText, this.suffixIcon, this.controller, this.maxLines, this.enabled,
+    this.obscureText, this.suffixIcon, this.controller, this.maxLines, this.enabled, this.validator,
   });
   final String labelText;
   final Function(String)? onChanged;
@@ -17,12 +17,13 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final int? maxLines;
   final bool? enabled;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 8.0, left: 8.0, top: 24),
       child: TextFormField(
-        validator: (value) {
+        validator:validator?? (value) {
           if (value!.isEmpty) {
             return "This field is required";
           } else {

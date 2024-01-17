@@ -14,7 +14,6 @@ class CustomAddProductForm extends StatefulWidget {
 
 class _CustomAddProductFormState extends State<CustomAddProductForm> {
   GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     AdminCubit cubit = context.read<AdminCubit>();
@@ -32,12 +31,11 @@ class _CustomAddProductFormState extends State<CustomAddProductForm> {
             BlocConsumer<AdminCubit, AdminState>(listener: (context, state) {
               if (state is AddProductFailure) {
                 Text(state.errMessage);
-              } else if (state is AddImageSuccess) {
+              } else if (state is AddProductSuccess) {
                 cubit.titleController.text = '';
                 cubit.descController.text = '';
                 cubit.priceController.text = '';
-                cubit.imageUrl = '';
-                cubit.selectedCategory = cubit.allCategories[0].title;
+                cubit.imageUrl = '';  
               }
             }, builder: (context, state) {
               return ElevatedButton(
@@ -45,11 +43,6 @@ class _CustomAddProductFormState extends State<CustomAddProductForm> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       await cubit.addProductDataToFireStore();
-                    }else
-                    {
-                      setState(() {
-                        autovalidateMode = AutovalidateMode.always;
-                      });
                     }
                   },
                   child: state is AddProductLoading

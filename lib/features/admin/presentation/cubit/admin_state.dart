@@ -25,7 +25,9 @@ final class AllCategoriesFailure extends AdminState {
 }
 
 final class AddProductLoading extends AdminState {}
-final class AddProductSuccess extends AdminState {}
+final class AddProductSuccess extends AdminState {
+
+}
 final class AddProductFailure extends AdminState {
   final String errMessage;
 

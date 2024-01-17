@@ -12,7 +12,9 @@ class CustomSelectCategoryBotomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     AdminCubit cubit = context.read<AdminCubit>();
     return BlocConsumer<AdminCubit, AdminState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          
+        },
         builder: (context, state) {
           return state is AllCategoreisLoading
               ? Container()
