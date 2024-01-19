@@ -3,8 +3,8 @@ import 'package:tigor_store/core/utils/app_styles.dart';
 import 'package:tigor_store/features/admin/data/models/category_model.dart';
 import 'package:tigor_store/features/home/presentation/view/components/home_components/category_item_image.dart';
 
-class CustomCategoryItem extends StatelessWidget {
-  const CustomCategoryItem({super.key, required this.model});
+class CustomHomeCategoryItem extends StatelessWidget {
+  const CustomHomeCategoryItem({super.key, required this.model});
   final CategoryModel model;
   @override
   Widget build(BuildContext context) {

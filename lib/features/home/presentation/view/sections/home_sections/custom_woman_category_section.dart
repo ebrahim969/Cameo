@@ -26,9 +26,7 @@ class CustomWomanCategorysSection extends StatelessWidget {
           },
           builder: (context, state) {
             return state is WomansProductLoading
-                ? CustomLoadingProductsWidget(
-                    dataList: context.read<HomeCubit>().womanProducts,
-                  )
+                ? const CustomLoadingProductsWidget()
                 : CustomCategoryListView(
                     dataList: context.read<HomeCubit>().womanProducts,
                   );

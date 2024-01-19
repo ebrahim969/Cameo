@@ -20,16 +20,13 @@ class CustomMensCategorysSection extends StatelessWidget {
         ),
         BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {
-            if(state is MensProductFailure)
-            {
+            if (state is MensProductFailure) {
               Text(state.errMessage);
             }
           },
           builder: (context, state) {
             return state is MensProductLoading
-                ? CustomLoadingProductsWidget(
-                    dataList: context.read<HomeCubit>().mensProducts,
-                  )
+                ? const CustomLoadingProductsWidget()
                 : CustomCategoryListView(
                     dataList: context.read<HomeCubit>().mensProducts,
                   );

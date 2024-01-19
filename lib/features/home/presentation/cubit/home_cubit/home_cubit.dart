@@ -16,9 +16,10 @@ class HomeCubit extends Cubit<HomeState> {
 
 
   Future<void> getHomeProducts() async {
+    await getHomeCategory();
     await getWomensProducts();
     await getMensProducts();
-    await getHomeCategory();
+    
   }
 
   Future<void> getWomensProducts() async {

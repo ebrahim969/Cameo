@@ -7,10 +7,11 @@ class ShimmerWidget extends StatelessWidget {
     super.key,
     required this.height,
     required this.width,
-    required this.circle,
+    required this.circle, this.marginSize,
   });
   final double height;
   final double width;
+  final double? marginSize;
   final bool circle;
   @override
   Widget build(BuildContext context) {
@@ -18,13 +19,15 @@ class ShimmerWidget extends StatelessWidget {
       width: width,
       height: height,
       child: Shimmer.fromColors(
-        baseColor: AppColors.greyColor,
-        highlightColor: Colors.white,
+        baseColor: AppColors.greyColor.withOpacity(0.3),
+        highlightColor: AppColors.greyColor.withOpacity(0.1),
         child: Container(
+          margin: EdgeInsets.all(marginSize?? 0),
           width: width,
           height: height,
           decoration: circle
               ? const BoxDecoration(
+                color: AppColors.blakColor,
                   shape: BoxShape.circle,
                 )
               : BoxDecoration(
