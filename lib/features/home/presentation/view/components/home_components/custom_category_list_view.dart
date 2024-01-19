@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tigor_store/features/home/data/model/product_model.dart';
-import 'package:tigor_store/features/home/presentation/view/components/custom_category_item.dart';
+import 'package:tigor_store/features/home/presentation/view/components/home_components/custom_category_item.dart';
 
 class CustomCategoryListView extends StatelessWidget {
   const CustomCategoryListView({super.key, required this.dataList, });

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tigor_store/core/utils/app_styles.dart';
 import 'package:tigor_store/features/home/data/model/product_model.dart';
-import 'package:tigor_store/features/home/presentation/view/components/custom_category_image.dart';
-import 'package:tigor_store/features/home/presentation/view/components/custom_favorite_button.dart';
+import 'package:tigor_store/features/home/presentation/view/components/home_components/custom_category_image.dart';
+import 'package:tigor_store/features/home/presentation/view/components/home_components/custom_favorite_button.dart';
 
 class CustomListViewItem extends StatelessWidget {
   const CustomListViewItem({super.key, required this.model});

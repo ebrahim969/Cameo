@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tigor_store/core/utils/app_strings.dart';
 import 'package:tigor_store/features/admin/data/models/category_model.dart';
 import 'package:tigor_store/features/home/data/model/product_model.dart';
 part 'home_state.dart';
@@ -21,7 +20,7 @@ class HomeCubit extends Cubit<HomeState> {
     await getMensProducts();
     await getHomeCategory();
   }
-  
+
   Future<void> getWomensProducts() async {
     try {
       emit(WomansProductLoading());

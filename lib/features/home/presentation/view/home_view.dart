@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tigor_store/features/home/presentation/view/components/custom_app_bar.dart';
-import 'package:tigor_store/features/home/presentation/view/sections/home_view_body.dart';
+import 'package:tigor_store/features/home/presentation/view/components/home_components/custom_app_bar.dart';
+import 'package:tigor_store/features/home/presentation/view/sections/home_sections/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

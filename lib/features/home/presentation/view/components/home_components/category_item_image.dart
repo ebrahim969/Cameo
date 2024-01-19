@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:tigor_store/core/functions/navigation.dart';
 import 'package:tigor_store/core/utils/app_colors.dart';
 import 'package:tigor_store/features/admin/data/models/category_model.dart';
-import 'package:tigor_store/features/home/presentation/view/components/custom_network_image_widget.dart';
+import 'package:tigor_store/features/home/presentation/view/components/home_components/custom_network_image_widget.dart';
 
 class CategoryItemImage extends StatelessWidget {
   const CategoryItemImage({
@@ -19,7 +17,6 @@ class CategoryItemImage extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         customNavigate(context, '/CategoryProductsView', extra: model);
-        log(model.title);
       },
       child: Container(
         margin: const EdgeInsets.all(8),

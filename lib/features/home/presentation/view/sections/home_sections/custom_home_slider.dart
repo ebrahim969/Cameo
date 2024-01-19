@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:tigor_store/features/home/data/model/slider_model.dart';
-import 'package:tigor_store/features/home/presentation/view/components/slider_button.dart';
-import 'package:tigor_store/features/home/presentation/view/components/slider_indecator.dart';
-import 'package:tigor_store/features/home/presentation/view/components/slider_widget.dart';
+import 'package:tigor_store/features/home/presentation/view/components/home_components/slider_button.dart';
+import 'package:tigor_store/features/home/presentation/view/components/home_components/slider_indecator.dart';
+import 'package:tigor_store/features/home/presentation/view/components/home_components/slider_widget.dart';
 
 class CustomHomeSlider extends StatefulWidget {
   const CustomHomeSlider({
