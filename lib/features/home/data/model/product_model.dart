@@ -7,10 +7,10 @@ class ProductModel extends DataModel {
 
   ProductModel(
       {required this.price,
-      required super.image,
-      required super.title,
+      required String image,
+      required String title,
       required this.desc,
-      required this.productDate,});
+      required this.productDate,}): super(image: image, title: title);
 
   factory ProductModel.fromJson(jsonData) {
     return ProductModel(

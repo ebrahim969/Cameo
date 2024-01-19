@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tigor_store/core/utils/app_strings.dart';
 import 'package:tigor_store/features/admin/data/models/category_model.dart';
 import 'package:tigor_store/features/home/data/model/product_model.dart';
 part 'home_state.dart';
@@ -14,12 +15,13 @@ class HomeCubit extends Cubit<HomeState> {
   List<ProductModel> mensProducts = [];
   List<CategoryModel> getCategories = [];
 
+
   Future<void> getHomeProducts() async {
     await getWomensProducts();
     await getMensProducts();
     await getHomeCategory();
   }
-
+  
   Future<void> getWomensProducts() async {
     try {
       emit(WomansProductLoading());
@@ -33,6 +35,8 @@ class HomeCubit extends Cubit<HomeState> {
 
       emit(WomansProductSuccess());
     } on FirebaseException catch (e) {
+      emit(WomansProductFailure(errMessage: e.toString()));
+    } catch (e) {
       emit(WomansProductFailure(errMessage: e.toString()));
     }
   }
@@ -51,6 +55,8 @@ class HomeCubit extends Cubit<HomeState> {
       emit(MensProductSuccess());
     } on FirebaseException catch (e) {
       emit(MensProductFailure(errMessage: e.toString()));
+    } catch (e) {
+      emit(MensProductFailure(errMessage: e.toString()));
     }
   }
 
@@ -66,6 +72,8 @@ class HomeCubit extends Cubit<HomeState> {
 
       emit(GetCategoriesSuccess());
     } on FirebaseException catch (e) {
+      emit(GetCategoriesFailure(errMessage: e.toString()));
+    } catch (e) {
       emit(GetCategoriesFailure(errMessage: e.toString()));
     }
   }

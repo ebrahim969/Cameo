@@ -38,5 +38,7 @@ abstract class AppString
 
 abstract class FirebaseStrings
 {
-  static const newproducts = "new_products";
+  static const allProducts = "products";
+  static const allCategories = "categories";
+
 }

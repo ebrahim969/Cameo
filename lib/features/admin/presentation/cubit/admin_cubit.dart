@@ -52,6 +52,7 @@ class AdminCubit extends Cubit<AdminState> {
         'title': titleController.text,
         'desc': descController.text,
         'price': int.parse(priceController.text),
+        'id' : int.parse(productIdController.text),
         'productDate': productDate,
       };
 

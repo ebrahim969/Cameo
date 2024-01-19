@@ -1,10 +1,10 @@
-class CategoryModel {
-  final String title;
-  final String imageUrl;
+import 'package:tigor_store/core/models/data_model.dart';
 
-  CategoryModel({required this.title, required this.imageUrl});
+class CategoryModel extends DataModel {
+
+  CategoryModel({required String title, required String image}) : super(image: image, title: title);
 
   factory CategoryModel.fromJson(jsonData) {
-    return CategoryModel(title: jsonData['title'], imageUrl: jsonData['image']);
+    return CategoryModel(title: jsonData['title'], image: jsonData['image']);
   }
 }

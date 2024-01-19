@@ -40,4 +40,11 @@ abstract class Styles
     fontFamily: 'Anybody',
     color: AppColors.greyColor,
   );
+
+  static const anybodyBoldstyle14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Anybody',
+    color: AppColors.blakColor,
+  );
 }

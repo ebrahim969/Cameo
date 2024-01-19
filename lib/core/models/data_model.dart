@@ -5,3 +5,5 @@ class DataModel
 
   DataModel({required this.image, required this.title});
 }
+
+

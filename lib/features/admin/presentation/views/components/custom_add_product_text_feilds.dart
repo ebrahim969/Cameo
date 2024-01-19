@@ -14,6 +14,10 @@ class CustomAddProductTextFeilds extends StatelessWidget {
     return Column(
       children: [
         CustomTextFormField(
+          labelText: "Product Id",
+          controller: cubit.productIdController
+        ),
+        CustomTextFormField(
           labelText: "title",
           controller: cubit.titleController,
         ),
