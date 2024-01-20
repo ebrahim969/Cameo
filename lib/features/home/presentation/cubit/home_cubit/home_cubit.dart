@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,13 +16,12 @@ class HomeCubit extends Cubit<HomeState> {
   List<ProductModel> womanProducts = [];
   List<ProductModel> mensProducts = [];
   List<CategoryModel> getCategories = [];
-
+  StreamSubscription? subscription;
 
   Future<void> getHomeProducts() async {
     await getHomeCategory();
     await getWomensProducts();
     await getMensProducts();
-    
   }
 
   Future<void> getWomensProducts() async {
@@ -76,5 +78,25 @@ class HomeCubit extends Cubit<HomeState> {
     } catch (e) {
       emit(GetCategoriesFailure(errMessage: e.toString()));
     }
+  }
+
+  void checkInternetConnection() {
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      if (result == ConnectivityResult.wifi ||
+          result == ConnectivityResult.mobile) {
+        emit(InternetConnectedState());
+      } else {
+        emit(InternetNotConnectedState(
+            mesage: "Check Your Internet And Try Again"));
+      }
+    });
+  }
+
+  @override
+  Future<void> close() {
+    subscription?.cancel();
+    return super.close();
   }
 }

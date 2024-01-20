@@ -44,7 +44,7 @@ class CustomAddProductImage extends StatelessWidget {
                           ),
                         )
                       : Image.asset(
-                          Assets.imagesNotimage,
+                          Assets.imagesNotFoundImage,
                           fit: BoxFit.cover,
                         ),
                 ),

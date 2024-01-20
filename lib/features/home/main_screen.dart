@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tigor_store/core/utils/app_colors.dart';
 import 'package:tigor_store/core/utils/app_images.dart';
+import 'package:tigor_store/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 import 'package:tigor_store/features/home/presentation/view/home_view.dart';
 
 PersistentTabController _controller = PersistentTabController();
@@ -29,7 +31,9 @@ class MainScreenView extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return [
-    const HomeView(),
+    BlocProvider(
+      create: (context) => HomeCubit()..getHomeProducts()..checkInternetConnection(),
+      child: const HomeView(),),
     Container(),
     Container(),
     Container(),

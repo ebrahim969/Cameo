@@ -29,6 +29,12 @@ final class GetCategoriesFailure extends HomeState {
   GetCategoriesFailure({required this.errMessage});
 }
 
+final class InternetConnectedState extends HomeState{}
+final class InternetNotConnectedState extends HomeState{
+  final String mesage;
+
+  InternetNotConnectedState({required this.mesage});
+}
 
 
 

@@ -99,7 +99,7 @@ class Assets {
 
   /// Assets for imagesNot found image
   /// assets/images/not found image.png
-  static const String imagesNotimage = "assets/images/not found image.png";
+  static const String imagesNotFoundImage = "assets/images/not found image.png";
 
   /// Assets for imagesOnBoarding1
   /// assets/images/on_boarding_1.jpg
@@ -128,4 +128,9 @@ class Assets {
   /// Assets for imagesShoppingBagIconActive
   /// assets/images/shopping_bag_icon_active.svg
   static const String imagesShoppingBagIconActive = "assets/images/shopping_bag_icon_active.svg";
+
+  /// Assets for imagesUndrawJustBrowsingReOfnd
+  /// assets/images/undraw_Just_browsing_re_ofnd.png
+  static const String imagesUndrawJustBrowsingReOfnd = "assets/images/undraw_Just_browsing_re_ofnd.png";
 }
+
