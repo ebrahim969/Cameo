@@ -21,7 +21,7 @@ class CategoryProductsView extends StatelessWidget {
             return CategoryProductsCubit()..getCtegoryProducts(model.title);
           }
         },
-        child: const CategoryProductsBody(),
+        child: CategoryProductsBody(model: model,),
       ),
     );
   }

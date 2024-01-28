@@ -11,7 +11,7 @@ showToast(
     gravity: ToastGravity.CENTER,
     timeInSecForIosWeb: 1,
     backgroundColor: AppColors.primaryColor,
-    textColor: Colors.white,
+    textColor: Colors.black,
     fontSize: 16.0,
   );
 }

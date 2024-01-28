@@ -13,11 +13,3 @@ final class CategoryProductsFailure extends CategoryProductsState {
   CategoryProductsFailure({required this.errMessage});
 }
 
-final class AllProductSuccess extends CategoryProductsState {}
-final class AllProductLoading extends CategoryProductsState {}
-final class AllProductFailure extends CategoryProductsState {
-  final String errMessage;
-
-  AllProductFailure({required this.errMessage});
-}
-

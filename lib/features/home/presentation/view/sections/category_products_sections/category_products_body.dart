@@ -1,64 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tigor_store/core/functions/custom_toast.dart';
-import 'package:tigor_store/features/home/presentation/cubit/category_products_cubit/category_products_cubit.dart';
+import 'package:tigor_store/features/admin/data/models/category_model.dart';
+import 'package:tigor_store/features/home/presentation/view/components/category_products_components/custom_category_products_app_bar.dart';
+import 'package:tigor_store/features/home/presentation/view/sections/category_products_sections/custom_category_products_section.dart';
 
 class CategoryProductsBody extends StatelessWidget {
   const CategoryProductsBody({
-    super.key,
+    super.key, required this.model,
   });
+  final CategoryModel model;
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return  CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: SizedBox(
             height: 24,
           ),
         ),
         SliverToBoxAdapter(
-          child: CustomCategoryProductsListView(),
+          child: CustomCategoryProductsAppBar(model: model)
+        ),
+        const SliverToBoxAdapter(
+          child: CustomCategoryProductsSection(),
         )
       ],
     );
   }
 }
 
-class CustomCategoryProductsListView extends StatelessWidget {
-  const CustomCategoryProductsListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var cubit = context.read<CategoryProductsCubit>();
-    return BlocConsumer<CategoryProductsCubit, CategoryProductsState>(
-      listener: (context, state) {
-        if(state is CategoryProductsFailure)
-        {
-          showToast(state.errMessage);
-        }
-      },
-      builder: (context, state) {
-        return state is CategoryProductsLoading?  
-        const CircularProgressIndicator()
-        :SizedBox(
-          height: MediaQuery.sizeOf(context).height ,
-          child: ListView.separated(
-              itemBuilder: (context, index) {
-                return  ListTile(
-                  leading: CircleAvatar(backgroundImage: NetworkImage(cubit.categoryProducts[index].image,)),
-                  title: Text(cubit.categoryProducts[index].title),
-                  trailing: Text(cubit.categoryProducts[index].price.toString()),
-                  subtitle: Text(cubit.categoryProducts[index].productDate),
-                );
-              },
-              separatorBuilder: ((context, index) {
-                return const SizedBox(
-                  height: 8,
-                );
-              }),
-              itemCount: cubit.categoryProducts.length),
-        );
-      },
-    );
-  }
-}

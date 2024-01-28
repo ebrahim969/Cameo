@@ -32,17 +32,17 @@ class CategoryProductsCubit extends Cubit<CategoryProductsState> {
 
   Future<void> getAllProducts() async {
     try {
-      emit(AllProductLoading());
+      emit(CategoryProductsLoading());
       await firestore.collection(FirebaseStrings.allProducts).get().then(
             (value) => value.docs.forEach((element) {
               categoryProducts.add(ProductModel.fromJson(element.data()));
             }),
           );
-      emit(AllProductSuccess());
+      emit(CategoryProductsSuccess());
     } on FirebaseException catch (e) {
-      emit(AllProductFailure(errMessage: e.toString()));
+      emit(CategoryProductsFailure(errMessage: e.toString()));
     } catch (e) {
-      emit(AllProductFailure(errMessage: e.toString()));
+      emit(CategoryProductsFailure(errMessage: e.toString()));
     }
   }
 }
